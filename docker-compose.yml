@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  buscar-remedios:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: buscar-remedios-app
+    ports:
+      - "53919:53919"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+       - SPRING_DATASOURCE_URL=jdbc:sqlserver://trabalho1.database.windows.net:1433;database=trabalho1.database.windows.net;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+       - SPRING_DATASOURCE_USERNAME=CloudSAb511277d@trabalho1
+       - SPRING_DATASOURCE_PASSWORD=ElvisElvis30
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "ps aux | grep '[j]ava.*app.jar' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
