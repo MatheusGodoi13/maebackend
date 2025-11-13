@@ -80,7 +80,7 @@ jobs:
 
       - name: maebackend
         id: dd954dc4-d034-4e15-a060-e212525a563f
-        uses: azure/MatheusGodoi@v2
+        uses: azure/login@v2
         with:
           app-name: ${{ env.maebackend }}
           publish-profile: ${{ secrets.MatheusGodoi }}
